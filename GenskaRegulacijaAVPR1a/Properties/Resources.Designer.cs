@@ -89,5 +89,15 @@ namespace GenskaRegulacijaAVPR1a.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rna_polymerase {
+            get {
+                object obj = ResourceManager.GetObject("rna-polymerase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

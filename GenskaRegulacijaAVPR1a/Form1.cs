@@ -14,12 +14,22 @@ namespace GenskaRegulacijaAVPR1a
     {
         private static string tooltipMessage = "Кликни за повеќе информации";
 
+        public RNAPolymerase rnaPolymerase { get; set; }
+
         public NucleusForm()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
             LoadComponents();
             FillTexts();
+
+            this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true,
+                new Point(470, 64),
+                this.lblTSSMark.Location,
+                new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y),
+                this.pbRNAPolymerase);
+
+            this.timePolymerase.Interval = (int)this.rnaPolymerase.Speed;
         }
 
         public void LoadComponents()
@@ -34,14 +44,21 @@ namespace GenskaRegulacijaAVPR1a
             this.lblExon2Mark.BackColor = Color.FromArgb(alphaValue, 192, 192, 255);
             this.lblUTR3Mark.BackColor = Color.FromArgb(alphaValue, 255, 192, 128);
 
+            this.btnStart.BackColor = this.btnStop.BackColor = Color.FromArgb(255, 139, 146, 174);
+            this.btnStart.FlatAppearance.BorderColor = this.btnStop.FlatAppearance.BorderColor = Color.FromArgb(255, 80, 85, 108);
+            this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = 2;
+            this.btnStart.ForeColor = this.btnStop.ForeColor = Color.White;
+
             this.lblTATA.FontSize = this.lblTSS.FontSize = this.lbl3UTR.FontSize = this.lbl5UTR.FontSize = 11;
             this.lblGeneName.FontSize = 18;
+            this.lblRNAPolymerase.FontSize = 14;
 
             toolTip1.SetToolTip(this.lblTATA, tooltipMessage);
             toolTip1.SetToolTip(this.lblTSS, tooltipMessage);
             toolTip1.SetToolTip(this.lbl3UTR, tooltipMessage);
             toolTip1.SetToolTip(this.lbl5UTR, tooltipMessage);
             toolTip1.SetToolTip(this.lblGeneName, tooltipMessage);
+            toolTip1.SetToolTip(this.lblRNAPolymerase, tooltipMessage);
         }
 
         private void FillTexts()
@@ -51,6 +68,7 @@ namespace GenskaRegulacijaAVPR1a
             this.lbl5UTR.ExplanationText = this.lbl3UTR.ExplanationText = "Пример објаснување за нетранслираниот регион";
 
             this.lblGeneName.ExplanationText = "Детали за генот";
+            this.lblRNAPolymerase.ExplanationText = "Детали за полимеразата";
         }
 
         private void ClickableLabel_Click(object sender, EventArgs e)
@@ -73,6 +91,29 @@ namespace GenskaRegulacijaAVPR1a
             customLabel.ForeColor = ClickableLabel.NormalTextColour;
             customLabel.Font = new Font("Calibri", customLabel.FontSize, FontStyle.Regular);
             this.Cursor = Cursors.Default;
+        }
+
+        private void timePolymerase_Tick(object sender, EventArgs e)
+        {
+            this.rnaPolymerase.move();
+            Invalidate();
+        }
+
+        private void NucleusForm_Paint(object sender, PaintEventArgs e)
+        {
+            this.rnaPolymerase.Draw(e.Graphics);
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            this.timePolymerase.Start();
+            this.rnaPolymerase.IsMoving = true;
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            this.timePolymerase.Stop();
+            this.rnaPolymerase.IsMoving = false;
         }
     }
 }

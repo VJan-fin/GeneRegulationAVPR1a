@@ -40,6 +40,11 @@
             this.pbDNA1 = new System.Windows.Forms.PictureBox();
             this.pbDNA2 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pbRNAPolymerase = new System.Windows.Forms.PictureBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.timePolymerase = new System.Windows.Forms.Timer(this.components);
+            this.lblRNAPolymerase = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblGeneName = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTATA = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lbl5UTR = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -47,6 +52,7 @@
             this.lblTSS = new GenskaRegulacijaAVPR1a.ClickableLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTSSMark
@@ -159,11 +165,74 @@
             this.pbDNA2.TabIndex = 0;
             this.pbDNA2.TabStop = false;
             // 
+            // pbRNAPolymerase
+            // 
+            this.pbRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
+            this.pbRNAPolymerase.Image = global::GenskaRegulacijaAVPR1a.Properties.Resources.RNA_pol_II;
+            this.pbRNAPolymerase.Location = new System.Drawing.Point(476, 64);
+            this.pbRNAPolymerase.Name = "pbRNAPolymerase";
+            this.pbRNAPolymerase.Size = new System.Drawing.Size(132, 74);
+            this.pbRNAPolymerase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbRNAPolymerase.TabIndex = 15;
+            this.pbRNAPolymerase.TabStop = false;
+            this.pbRNAPolymerase.Visible = false;
+            // 
+            // btnStart
+            // 
+            this.btnStart.BackColor = System.Drawing.Color.White;
+            this.btnStart.FlatAppearance.BorderSize = 2;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnStart.Location = new System.Drawing.Point(747, 290);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(203, 49);
+            this.btnStart.TabIndex = 17;
+            this.btnStart.Text = "Започни транскрипција";
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // btnStop
+            // 
+            this.btnStop.BackColor = System.Drawing.Color.White;
+            this.btnStop.FlatAppearance.BorderSize = 2;
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnStop.Location = new System.Drawing.Point(747, 356);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(203, 49);
+            this.btnStop.TabIndex = 18;
+            this.btnStop.Text = "Запри транскрипција";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            // 
+            // timePolymerase
+            // 
+            this.timePolymerase.Interval = 20;
+            this.timePolymerase.Tick += new System.EventHandler(this.timePolymerase_Tick);
+            // 
+            // lblRNAPolymerase
+            // 
+            this.lblRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
+            this.lblRNAPolymerase.ExplanationText = null;
+            this.lblRNAPolymerase.Font = new System.Drawing.Font("Calibri", 14F);
+            this.lblRNAPolymerase.FontSize = 0F;
+            this.lblRNAPolymerase.ForeColor = System.Drawing.Color.White;
+            this.lblRNAPolymerase.Location = new System.Drawing.Point(463, 24);
+            this.lblRNAPolymerase.Name = "lblRNAPolymerase";
+            this.lblRNAPolymerase.Size = new System.Drawing.Size(153, 37);
+            this.lblRNAPolymerase.TabIndex = 16;
+            this.lblRNAPolymerase.Text = "РНК полимераза";
+            this.lblRNAPolymerase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRNAPolymerase.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblRNAPolymerase.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblRNAPolymerase.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
             // lblGeneName
             // 
             this.lblGeneName.BackColor = System.Drawing.Color.Transparent;
             this.lblGeneName.ExplanationText = null;
             this.lblGeneName.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblGeneName.FontSize = 0F;
             this.lblGeneName.ForeColor = System.Drawing.Color.White;
             this.lblGeneName.Location = new System.Drawing.Point(32, 26);
             this.lblGeneName.Name = "lblGeneName";
@@ -180,6 +249,7 @@
             this.lblTATA.BackColor = System.Drawing.Color.Transparent;
             this.lblTATA.ExplanationText = null;
             this.lblTATA.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTATA.FontSize = 0F;
             this.lblTATA.ForeColor = System.Drawing.Color.White;
             this.lblTATA.Location = new System.Drawing.Point(277, 538);
             this.lblTATA.Name = "lblTATA";
@@ -196,6 +266,7 @@
             this.lbl5UTR.BackColor = System.Drawing.Color.Transparent;
             this.lbl5UTR.ExplanationText = null;
             this.lbl5UTR.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl5UTR.FontSize = 0F;
             this.lbl5UTR.ForeColor = System.Drawing.Color.White;
             this.lbl5UTR.Location = new System.Drawing.Point(464, 540);
             this.lbl5UTR.Name = "lbl5UTR";
@@ -212,6 +283,7 @@
             this.lbl3UTR.BackColor = System.Drawing.Color.Transparent;
             this.lbl3UTR.ExplanationText = null;
             this.lbl3UTR.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl3UTR.FontSize = 0F;
             this.lbl3UTR.ForeColor = System.Drawing.Color.White;
             this.lbl3UTR.Location = new System.Drawing.Point(812, 538);
             this.lbl3UTR.Name = "lbl3UTR";
@@ -228,6 +300,7 @@
             this.lblTSS.BackColor = System.Drawing.Color.Transparent;
             this.lblTSS.ExplanationText = null;
             this.lblTSS.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTSS.FontSize = 0F;
             this.lblTSS.ForeColor = System.Drawing.Color.White;
             this.lblTSS.Location = new System.Drawing.Point(365, 540);
             this.lblTSS.Name = "lblTSS";
@@ -246,6 +319,10 @@
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 612);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.lblRNAPolymerase);
+            this.Controls.Add(this.pbRNAPolymerase);
             this.Controls.Add(this.lblGeneName);
             this.Controls.Add(this.lblPromotorMark);
             this.Controls.Add(this.lblTATA);
@@ -263,8 +340,10 @@
             this.Controls.Add(this.pbDNA2);
             this.Name = "NucleusForm";
             this.Text = "Генска регулација на AVPR1a";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NucleusForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,6 +366,11 @@
         private System.Windows.Forms.Label lblPromotorMark;
         private System.Windows.Forms.ToolTip toolTip1;
         private ClickableLabel lblGeneName;
+        private System.Windows.Forms.PictureBox pbRNAPolymerase;
+        private ClickableLabel lblRNAPolymerase;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Timer timePolymerase;
     }
 }
 
