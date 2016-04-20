@@ -44,6 +44,8 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.timePolymerase = new System.Windows.Forms.Timer(this.components);
+            this.lblSmallMolecules = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblTF = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblRNAPolymerase = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblGeneName = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTATA = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -220,6 +222,42 @@
             this.timePolymerase.Interval = 20;
             this.timePolymerase.Tick += new System.EventHandler(this.timePolymerase_Tick);
             // 
+            // lblSmallMolecules
+            // 
+            this.lblSmallMolecules.AutoSize = true;
+            this.lblSmallMolecules.BackColor = System.Drawing.Color.Transparent;
+            this.lblSmallMolecules.ExplanationText = null;
+            this.lblSmallMolecules.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblSmallMolecules.FontSize = 0F;
+            this.lblSmallMolecules.ForeColor = System.Drawing.Color.White;
+            this.lblSmallMolecules.Location = new System.Drawing.Point(276, 100);
+            this.lblSmallMolecules.Name = "lblSmallMolecules";
+            this.lblSmallMolecules.Size = new System.Drawing.Size(138, 23);
+            this.lblSmallMolecules.TabIndex = 20;
+            this.lblSmallMolecules.Text = "Мали молекули";
+            this.lblSmallMolecules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblSmallMolecules.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblSmallMolecules.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblSmallMolecules.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblTF
+            // 
+            this.lblTF.AutoSize = true;
+            this.lblTF.BackColor = System.Drawing.Color.Transparent;
+            this.lblTF.ExplanationText = null;
+            this.lblTF.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTF.FontSize = 0F;
+            this.lblTF.ForeColor = System.Drawing.Color.White;
+            this.lblTF.Location = new System.Drawing.Point(12, 100);
+            this.lblTF.Name = "lblTF";
+            this.lblTF.Size = new System.Drawing.Size(212, 23);
+            this.lblTF.TabIndex = 19;
+            this.lblTF.Text = "Транскрипциски фактори";
+            this.lblTF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTF.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblTF.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblTF.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
             // lblRNAPolymerase
             // 
             this.lblRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
@@ -329,6 +367,8 @@
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 612);
+            this.Controls.Add(this.lblSmallMolecules);
+            this.Controls.Add(this.lblTF);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblRNAPolymerase);
@@ -355,6 +395,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -381,6 +422,8 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Timer timePolymerase;
+        private ClickableLabel lblTF;
+        private ClickableLabel lblSmallMolecules;
     }
 }
 

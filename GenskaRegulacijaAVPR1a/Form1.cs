@@ -33,21 +33,26 @@ namespace GenskaRegulacijaAVPR1a
 
         public void LoadComponents()
         {
+            // Animation control buttons
             this.btnStart.BackColor = this.btnStop.BackColor = Color.FromArgb(255, 139, 146, 174);
             this.btnStart.FlatAppearance.BorderColor = this.btnStop.FlatAppearance.BorderColor = Color.FromArgb(255, 80, 85, 108);
             this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = 2;
             this.btnStart.ForeColor = this.btnStop.ForeColor = Color.White;
 
+            // Necessary for proper and consistent change during mouse over
             this.lblTATA.FontSize = this.lblTSS.FontSize = this.lbl3UTR.FontSize = this.lbl5UTR.FontSize = 11;
             this.lblGeneName.FontSize = 18;
-            this.lblRNAPolymerase.FontSize = 14;
+            this.lblRNAPolymerase.FontSize = this.lblTF.FontSize = this.lblSmallMolecules.FontSize = 14;
 
+            // Setting a tooltip message that labels contain more details on click
             toolTip1.SetToolTip(this.lblTATA, tooltipMessage);
             toolTip1.SetToolTip(this.lblTSS, tooltipMessage);
             toolTip1.SetToolTip(this.lbl3UTR, tooltipMessage);
             toolTip1.SetToolTip(this.lbl5UTR, tooltipMessage);
             toolTip1.SetToolTip(this.lblGeneName, tooltipMessage);
             toolTip1.SetToolTip(this.lblRNAPolymerase, tooltipMessage);
+            toolTip1.SetToolTip(this.lblTF, tooltipMessage);
+            toolTip1.SetToolTip(this.lblSmallMolecules, tooltipMessage);
         }
 
         private void FillTexts()
@@ -58,6 +63,8 @@ namespace GenskaRegulacijaAVPR1a
 
             this.lblGeneName.ExplanationText = "Детали за генот";
             this.lblRNAPolymerase.ExplanationText = "Детали за полимеразата";
+            this.lblTF.ExplanationText = "Детали за транскрипциските фактори";
+            this.lblSmallMolecules.ExplanationText = "Детали за малите молекули";
         }
 
         private void ClickableLabel_Click(object sender, EventArgs e)
