@@ -65,6 +65,7 @@
             this.lblTSSMark.TabIndex = 3;
             this.lblTSSMark.Text = "TSS";
             this.lblTSSMark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTSSMark.Visible = false;
             // 
             // lblUTR5Mark
             // 
@@ -76,6 +77,7 @@
             this.lblUTR5Mark.TabIndex = 4;
             this.lblUTR5Mark.Text = "5\' UTR";
             this.lblUTR5Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUTR5Mark.Visible = false;
             // 
             // lblUTR3Mark
             // 
@@ -87,6 +89,7 @@
             this.lblUTR3Mark.TabIndex = 5;
             this.lblUTR3Mark.Text = "3\' UTR";
             this.lblUTR3Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUTR3Mark.Visible = false;
             // 
             // lblExon2Mark
             // 
@@ -98,6 +101,7 @@
             this.lblExon2Mark.TabIndex = 6;
             this.lblExon2Mark.Text = "Егзон 2";
             this.lblExon2Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblExon2Mark.Visible = false;
             // 
             // lblExon1Mark
             // 
@@ -109,6 +113,7 @@
             this.lblExon1Mark.TabIndex = 7;
             this.lblExon1Mark.Text = "Егзон 1";
             this.lblExon1Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblExon1Mark.Visible = false;
             // 
             // lblIntron1Mark
             // 
@@ -120,6 +125,7 @@
             this.lblIntron1Mark.TabIndex = 8;
             this.lblIntron1Mark.Text = "Интрон 1";
             this.lblIntron1Mark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIntron1Mark.Visible = false;
             // 
             // lblTATAMark
             // 
@@ -131,6 +137,7 @@
             this.lblTATAMark.TabIndex = 11;
             this.lblTATAMark.Text = "ТАТА";
             this.lblTATAMark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTATAMark.Visible = false;
             // 
             // lblPromotorMark
             // 
@@ -142,6 +149,7 @@
             this.lblPromotorMark.TabIndex = 13;
             this.lblPromotorMark.Text = "Близок промотор";
             this.lblPromotorMark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPromotorMark.Visible = false;
             // 
             // pbDNA1
             // 
@@ -153,6 +161,7 @@
             this.pbDNA1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDNA1.TabIndex = 1;
             this.pbDNA1.TabStop = false;
+            this.pbDNA1.Visible = false;
             // 
             // pbDNA2
             // 
@@ -164,14 +173,15 @@
             this.pbDNA2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbDNA2.TabIndex = 0;
             this.pbDNA2.TabStop = false;
+            this.pbDNA2.Visible = false;
             // 
             // pbRNAPolymerase
             // 
             this.pbRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
             this.pbRNAPolymerase.Image = global::GenskaRegulacijaAVPR1a.Properties.Resources.RNA_pol_II;
-            this.pbRNAPolymerase.Location = new System.Drawing.Point(476, 64);
+            this.pbRNAPolymerase.Location = new System.Drawing.Point(496, 64);
             this.pbRNAPolymerase.Name = "pbRNAPolymerase";
-            this.pbRNAPolymerase.Size = new System.Drawing.Size(132, 74);
+            this.pbRNAPolymerase.Size = new System.Drawing.Size(70, 55);
             this.pbRNAPolymerase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbRNAPolymerase.TabIndex = 15;
             this.pbRNAPolymerase.TabStop = false;
@@ -221,7 +231,7 @@
             this.lblRNAPolymerase.Name = "lblRNAPolymerase";
             this.lblRNAPolymerase.Size = new System.Drawing.Size(153, 37);
             this.lblRNAPolymerase.TabIndex = 16;
-            this.lblRNAPolymerase.Text = "РНК полимераза";
+            this.lblRNAPolymerase.Text = "RNA полимераза";
             this.lblRNAPolymerase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRNAPolymerase.Click += new System.EventHandler(this.ClickableLabel_Click);
             this.lblRNAPolymerase.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);

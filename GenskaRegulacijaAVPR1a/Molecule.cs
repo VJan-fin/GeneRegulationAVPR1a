@@ -51,7 +51,7 @@ namespace GenskaRegulacijaAVPR1a
             this.InitialPosition = this.CurrentPosition = initialPosition;
             this.Visibility = visibility;
             this.IsMoving = false;
-            this.Speed = 20;
+            this.Speed = 120;
         }
 
         /**

@@ -24,26 +24,15 @@ namespace GenskaRegulacijaAVPR1a
             FillTexts();
 
             this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true,
-                new Point(470, 64),
-                this.lblTSSMark.Location,
-                new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y),
-                this.pbRNAPolymerase);
+                new Point(496, 64),
+                new Point(this.lblTSSMark.Location.X - 30, this.lblTSSMark.Location.Y - 10),
+                new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
 
             this.timePolymerase.Interval = (int)this.rnaPolymerase.Speed;
         }
 
         public void LoadComponents()
         {
-            int alphaValue = 180;
-            this.lblPromotorMark.BackColor = Color.FromArgb(alphaValue, 143, 188, 143); // dark sea green
-            this.lblTATAMark.BackColor = Color.FromArgb(alphaValue, 255, 192, 255);
-            this.lblTSSMark.BackColor = Color.FromArgb(alphaValue, 192, 255, 192);
-            this.lblUTR5Mark.BackColor = Color.FromArgb(alphaValue, 255, 192, 128);
-            this.lblExon1Mark.BackColor = Color.FromArgb(alphaValue, 192, 192, 255);
-            this.lblIntron1Mark.BackColor = Color.FromArgb(alphaValue, 255, 128, 128);
-            this.lblExon2Mark.BackColor = Color.FromArgb(alphaValue, 192, 192, 255);
-            this.lblUTR3Mark.BackColor = Color.FromArgb(alphaValue, 255, 192, 128);
-
             this.btnStart.BackColor = this.btnStop.BackColor = Color.FromArgb(255, 139, 146, 174);
             this.btnStart.FlatAppearance.BorderColor = this.btnStop.FlatAppearance.BorderColor = Color.FromArgb(255, 80, 85, 108);
             this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = 2;
@@ -96,12 +85,101 @@ namespace GenskaRegulacijaAVPR1a
         private void timePolymerase_Tick(object sender, EventArgs e)
         {
             this.rnaPolymerase.move();
-            Invalidate();
+            Invalidate(true);
+        }
+
+        /**
+         * Draws the two DNA strands in the bottom of the screen
+         */
+        private void drawDNAStrand(Graphics g)
+        {
+            Bitmap bitmap = new Bitmap(Properties.Resources.dna_strand);
+            g.DrawImage(bitmap, -5, 491, 529, 47);
+            g.DrawImage(bitmap, 523, 488, 467, 47);
+        }
+
+        /**
+         * Draws the labels for the different regions on the DNA strand
+         */
+        private void drawDNARegions(Graphics g)
+        {
+            SolidBrush brush;
+            SolidBrush textBrush = new SolidBrush(Color.FromArgb(255, 50, 50, 50));
+            Control control;
+            Font labels = new Font("Calibri", (float)11.5, FontStyle.Bold);
+            PointF textLocation;
+            int alphaValue = 190;
+
+            // Proximal promotor
+            brush = new SolidBrush(Color.FromArgb(alphaValue, Color.DarkSeaGreen)); // RGB(143, 188, 143)
+            control = this.lblPromotorMark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 10, control.Location.Y + control.Height / 3);
+            g.DrawString("Близок промотор", labels, textBrush, textLocation);
+        
+            // TATA box
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 255, 192, 255));
+            control = this.lblTATAMark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 12, control.Location.Y + control.Height / 3);
+            g.DrawString("TATA", labels, textBrush, textLocation);
+
+            // Transcription Start Site (TSS)
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 192, 255, 192));
+            control = this.lblTSSMark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 10, control.Location.Y + control.Height / 3);
+            g.DrawString("TSS", labels, textBrush, textLocation);
+
+            // Untranslated region 5'
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 255, 192, 128));
+            control = this.lblUTR5Mark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 4, control.Location.Y + control.Height / 3);
+            g.DrawString("5' UTR", labels, textBrush, textLocation);
+
+            // Exon 1
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 192, 192, 255));
+            control = this.lblExon1Mark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 5, control.Location.Y + control.Height / 3);
+            g.DrawString("Егзон 1", labels, textBrush, textLocation);
+
+            // Intron 1
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 255, 128, 128));
+            control = this.lblIntron1Mark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 5, control.Location.Y + control.Height / 3);
+            g.DrawString("Интрон 1", labels, textBrush, textLocation);
+
+            // Exon 2
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 192, 192, 255));
+            control = this.lblExon2Mark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 12, control.Location.Y + control.Height / 3);
+            g.DrawString("Егзон 2", labels, textBrush, textLocation);
+
+            // Untranslated region 3'
+            brush = new SolidBrush(Color.FromArgb(alphaValue, 255, 192, 128));
+            control = this.lblUTR3Mark;
+            g.FillRectangle(brush, control.Location.X, control.Location.Y, control.Width, control.Height);
+            textLocation = new PointF(control.Location.X + control.Width / 4, control.Location.Y + control.Height / 3);
+            g.DrawString("3' UTR", labels, textBrush, textLocation);
+        
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            this.drawDNAStrand(e.Graphics);
+            this.drawDNARegions(e.Graphics);
+
+            this.rnaPolymerase.Draw(e.Graphics);
         }
 
         private void NucleusForm_Paint(object sender, PaintEventArgs e)
         {
-            this.rnaPolymerase.Draw(e.Graphics);
+            
         }
 
         private void btnStart_Click(object sender, EventArgs e)
