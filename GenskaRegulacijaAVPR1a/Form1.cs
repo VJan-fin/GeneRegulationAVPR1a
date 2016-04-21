@@ -16,6 +16,7 @@ namespace GenskaRegulacijaAVPR1a
 
         public RNAPolymerase rnaPolymerase { get; set; }
         public Dictionary<string, TransciptionFactor> TFs { get; set; }
+        public Dictionary<string, SmallMoleculePerturbation> smallMolecules { get; set; }
 
         public NucleusForm()
         {
@@ -26,16 +27,6 @@ namespace GenskaRegulacijaAVPR1a
             setScreenLayout();
 
             this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
-        }
-
-        public void setScreenLayout()
-        {
-            LoadTranscriptionFactors();
-
-            this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true, 120,
-                new Point(586, 64),
-                new Point(this.lblTSSMark.Location.X - 30, this.lblTSSMark.Location.Y - 10),
-                new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
         }
 
         public void LoadComponents()
@@ -95,9 +86,22 @@ namespace GenskaRegulacijaAVPR1a
             this.lblTRIM28.ExplanationText = "Репресор";
         }
 
+
+        public void setScreenLayout()
+        {
+            LoadTranscriptionFactors();
+
+            this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true, 200,
+                new Point(586, 64),
+                new Point(this.lblTSSMark.Location.X - 30, this.lblTSSMark.Location.Y - 10),
+                new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
+
+            this.LoadSmallMolecules();
+        }
+
         public void LoadTranscriptionFactors()
         {
-            float bindingSpeed = 120;
+            float bindingSpeed = 200;
             this.TFs = new Dictionary<string, TransciptionFactor>();
 
             this.TFs.Add(this.cbRP58.Name, new TransciptionFactor("RP58", "", cbRP58.Checked, bindingSpeed, new Point(50, 320), -1, new Point(125, 507), Color.PaleVioletRed, 19));
@@ -106,6 +110,23 @@ namespace GenskaRegulacijaAVPR1a
             this.TFs.Add(this.cbCLOCK.Name, new TransciptionFactor("CLOCK", "", cbCLOCK.Checked, bindingSpeed, new Point(210, 320), 1, new Point(183, 517), Color.Lavender, 21));
             this.TFs.Add(this.cbTRIM28.Name, new TransciptionFactor("TRIM28", "", cbTRIM28.Checked, bindingSpeed, new Point(270, 320), -1, new Point(208, 509), Color.Khaki, 25));
         
+        }
+
+        public void LoadSmallMolecules()
+        {
+            float speed = 10;
+            Rectangle smallMoleculePanel = new Rectangle(523, 366, 411, 100);
+            this.smallMolecules = new Dictionary<string, SmallMoleculePerturbation>();
+
+            this.numDiclofenamide.Value = 0;
+            this.numLincomycin.Value = 0;
+            this.numProcaine.Value = 0;
+            this.numTroglitazone.Value = 0;
+
+            this.smallMolecules.Add(this.numDiclofenamide.Name, new SmallMoleculePerturbation("D", "", true, speed, Color.Sienna, 12, smallMoleculePanel));
+            this.smallMolecules.Add(this.numLincomycin.Name, new SmallMoleculePerturbation("L", "", true, speed, Color.Salmon, 12, smallMoleculePanel));
+            this.smallMolecules.Add(this.numProcaine.Name, new SmallMoleculePerturbation("P", "", true, speed, Color.LightSkyBlue, 12, smallMoleculePanel));
+            this.smallMolecules.Add(this.numTroglitazone.Name, new SmallMoleculePerturbation("T", "", true, speed, Color.Moccasin, 12, smallMoleculePanel));
         }
 
         /**
@@ -282,10 +303,19 @@ namespace GenskaRegulacijaAVPR1a
             this.drawDNARegions(e.Graphics);
 
             this.rnaPolymerase.Draw(e.Graphics);
+
+            // draw the TF representations
             foreach (var item in this.TFs.Values)
             {
                 item.Draw(e.Graphics);
             }
+
+            // draw the small molecules representations
+            foreach (var item in this.smallMolecules.Values)
+            {
+                item.Draw(e.Graphics);
+            }
+
         }
 
         private void NucleusForm_Paint(object sender, PaintEventArgs e)
@@ -337,6 +367,8 @@ namespace GenskaRegulacijaAVPR1a
             this.btnStart.Enabled = true;
             this.timeMoleculeBinding.Stop();
             this.timeRNATranscription.Stop();
+            this.rnaPolymerase.Speed = 200;
+            this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
             Invalidate();
         }
 
@@ -348,6 +380,29 @@ namespace GenskaRegulacijaAVPR1a
             {
                 tf = this.TFs[cb.Name];
                 tf.Visibility = cb.Checked;
+            }
+            Invalidate();
+        }
+
+        private void numSmallMolecules_ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown control = sender as NumericUpDown;
+            if (this.smallMolecules.ContainsKey(control.Name))
+            {
+                int oldValue = this.smallMolecules[control.Name].Locations.Count;
+                int newValue = (int)control.Value;
+                if (oldValue < newValue)
+                {
+                    this.smallMolecules[control.Name].increaseSmallMoleculeQuantity();
+                    this.rnaPolymerase.Speed -= this.smallMolecules[control.Name].Speed;
+                }
+                else if (oldValue > newValue)
+                {
+                    this.smallMolecules[control.Name].decreaseSmallMoleculeQuantity();
+                    this.rnaPolymerase.Speed += this.smallMolecules[control.Name].Speed;
+                }
+
+                this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
             }
             Invalidate();
         }

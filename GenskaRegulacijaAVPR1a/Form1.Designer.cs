@@ -219,7 +219,7 @@
             this.btnStart.FlatAppearance.BorderSize = 2;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStart.Location = new System.Drawing.Point(747, 273);
+            this.btnStart.Location = new System.Drawing.Point(759, 208);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(198, 33);
             this.btnStart.TabIndex = 17;
@@ -233,7 +233,7 @@
             this.btnStop.FlatAppearance.BorderSize = 2;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStop.Location = new System.Drawing.Point(747, 323);
+            this.btnStop.Location = new System.Drawing.Point(759, 258);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(198, 33);
             this.btnStop.TabIndex = 18;
@@ -314,7 +314,7 @@
             // 
             this.numDiclofenamide.Location = new System.Drawing.Point(388, 144);
             this.numDiclofenamide.Maximum = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -322,12 +322,13 @@
             this.numDiclofenamide.Size = new System.Drawing.Size(45, 20);
             this.numDiclofenamide.TabIndex = 32;
             this.numDiclofenamide.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numDiclofenamide.ValueChanged += new System.EventHandler(this.numSmallMolecules_ValueChanged);
             // 
             // numLincomycin
             // 
             this.numLincomycin.Location = new System.Drawing.Point(388, 175);
             this.numLincomycin.Maximum = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -335,12 +336,13 @@
             this.numLincomycin.Size = new System.Drawing.Size(45, 20);
             this.numLincomycin.TabIndex = 34;
             this.numLincomycin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numLincomycin.ValueChanged += new System.EventHandler(this.numSmallMolecules_ValueChanged);
             // 
             // numProcaine
             // 
             this.numProcaine.Location = new System.Drawing.Point(388, 203);
             this.numProcaine.Maximum = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -348,12 +350,13 @@
             this.numProcaine.Size = new System.Drawing.Size(45, 20);
             this.numProcaine.TabIndex = 36;
             this.numProcaine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numProcaine.ValueChanged += new System.EventHandler(this.numSmallMolecules_ValueChanged);
             // 
             // numTroglitazone
             // 
             this.numTroglitazone.Location = new System.Drawing.Point(388, 231);
             this.numTroglitazone.Maximum = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -361,6 +364,7 @@
             this.numTroglitazone.Size = new System.Drawing.Size(45, 20);
             this.numTroglitazone.TabIndex = 38;
             this.numTroglitazone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numTroglitazone.ValueChanged += new System.EventHandler(this.numSmallMolecules_ValueChanged);
             // 
             // timeRNATranscription
             // 
@@ -372,7 +376,7 @@
             this.btnReset.FlatAppearance.BorderSize = 2;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnReset.Location = new System.Drawing.Point(747, 372);
+            this.btnReset.Location = new System.Drawing.Point(759, 307);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(198, 33);
             this.btnReset.TabIndex = 39;
