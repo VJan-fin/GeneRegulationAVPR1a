@@ -53,6 +53,8 @@
             this.numLincomycin = new System.Windows.Forms.NumericUpDown();
             this.numProcaine = new System.Windows.Forms.NumericUpDown();
             this.numTroglitazone = new System.Windows.Forms.NumericUpDown();
+            this.timeRNATranscription = new System.Windows.Forms.Timer(this.components);
+            this.btnReset = new System.Windows.Forms.Button();
             this.lblTroglitazone = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblProcaine = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblLincomycin = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -70,7 +72,6 @@
             this.lbl5UTR = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lbl3UTR = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTSS = new GenskaRegulacijaAVPR1a.ClickableLabel();
-            this.timeRNATranscription = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).BeginInit();
@@ -218,11 +219,11 @@
             this.btnStart.FlatAppearance.BorderSize = 2;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStart.Location = new System.Drawing.Point(747, 290);
+            this.btnStart.Location = new System.Drawing.Point(747, 273);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(203, 49);
+            this.btnStart.Size = new System.Drawing.Size(198, 33);
             this.btnStart.TabIndex = 17;
-            this.btnStart.Text = "Поврзување";
+            this.btnStart.Text = "Поврзи";
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -232,9 +233,9 @@
             this.btnStop.FlatAppearance.BorderSize = 2;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStop.Location = new System.Drawing.Point(747, 356);
+            this.btnStop.Location = new System.Drawing.Point(747, 323);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(203, 49);
+            this.btnStop.Size = new System.Drawing.Size(198, 33);
             this.btnStop.TabIndex = 18;
             this.btnStop.Text = "Запри транскрипција";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -360,6 +361,24 @@
             this.numTroglitazone.Size = new System.Drawing.Size(45, 20);
             this.numTroglitazone.TabIndex = 38;
             this.numTroglitazone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // timeRNATranscription
+            // 
+            this.timeRNATranscription.Tick += new System.EventHandler(this.timeRNATranscription_Tick);
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.White;
+            this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnReset.Location = new System.Drawing.Point(747, 372);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(198, 33);
+            this.btnReset.TabIndex = 39;
+            this.btnReset.Text = "Ресетирај";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblTroglitazone
             // 
@@ -661,10 +680,6 @@
             this.lblTSS.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
             this.lblTSS.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
             // 
-            // timeRNATranscription
-            // 
-            this.timeRNATranscription.Tick += new System.EventHandler(this.timeRNATranscription_Tick);
-            // 
             // NucleusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,6 +687,7 @@
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 612);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.numTroglitazone);
             this.Controls.Add(this.lblTroglitazone);
             this.Controls.Add(this.numProcaine);
@@ -770,6 +786,7 @@
         private System.Windows.Forms.NumericUpDown numTroglitazone;
         private ClickableLabel lblTroglitazone;
         private System.Windows.Forms.Timer timeRNATranscription;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

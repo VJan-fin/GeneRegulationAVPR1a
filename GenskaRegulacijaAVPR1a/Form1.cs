@@ -23,23 +23,28 @@ namespace GenskaRegulacijaAVPR1a
             this.DoubleBuffered = true;
             LoadComponents();
             FillTexts();
+            setScreenLayout();
+
+            this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
+        }
+
+        public void setScreenLayout()
+        {
             LoadTranscriptionFactors();
 
             this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true, 120,
                 new Point(586, 64),
                 new Point(this.lblTSSMark.Location.X - 30, this.lblTSSMark.Location.Y - 10),
                 new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
-
-            this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
         }
 
         public void LoadComponents()
         {
             // Animation control buttons
-            this.btnStart.BackColor = this.btnStop.BackColor = Color.FromArgb(255, 139, 146, 174);
-            this.btnStart.FlatAppearance.BorderColor = this.btnStop.FlatAppearance.BorderColor = Color.FromArgb(255, 80, 85, 108);
-            this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = 2;
-            this.btnStart.ForeColor = this.btnStop.ForeColor = Color.White;
+            this.btnStart.BackColor = this.btnStop.BackColor = this.btnReset.BackColor = Color.FromArgb(255, 139, 146, 174);
+            this.btnStart.FlatAppearance.BorderColor = this.btnStop.FlatAppearance.BorderColor = this.btnReset.FlatAppearance.BorderColor = Color.FromArgb(255, 80, 85, 108);
+            this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = this.btnReset.FlatAppearance.BorderSize = 2;
+            this.btnStart.ForeColor = this.btnStop.ForeColor = this.btnReset.ForeColor = Color.White;
 
 
             // Necessary for proper and consistent change during mouse over
@@ -263,7 +268,7 @@ namespace GenskaRegulacijaAVPR1a
             this.rnaPolymerase.move();
             if (this.rnaPolymerase.CurrentPosition == this.rnaPolymerase.InitialPosition)
             {
-                this.btnStart.Text = "Поврзување";
+                this.btnStart.Text = "Поврзи";
                 this.btnStart.Enabled = true;
                 this.timeRNATranscription.Stop();
             }
@@ -291,7 +296,7 @@ namespace GenskaRegulacijaAVPR1a
         private void btnStart_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            if (btn.Text == "Поврзување")
+            if (btn.Text == "Поврзи")
             {
                 this.timeMoleculeBinding.Start();
                 btn.Enabled = false;
@@ -323,6 +328,16 @@ namespace GenskaRegulacijaAVPR1a
             {
                 item.IsMoving = false;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            this.setScreenLayout();
+            this.btnStart.Text = "Поврзи";
+            this.btnStart.Enabled = true;
+            this.timeMoleculeBinding.Stop();
+            this.timeRNATranscription.Stop();
+            Invalidate();
         }
 
         private void cbTF_CheckedChanged(object sender, EventArgs e)
