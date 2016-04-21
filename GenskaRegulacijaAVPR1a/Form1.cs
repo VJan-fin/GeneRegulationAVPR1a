@@ -15,6 +15,7 @@ namespace GenskaRegulacijaAVPR1a
         private static string tooltipMessage = "Кликни за повеќе информации";
 
         public RNAPolymerase rnaPolymerase { get; set; }
+        public Dictionary<string, TransciptionFactor> TFs { get; set; }
 
         public NucleusForm()
         {
@@ -22,13 +23,14 @@ namespace GenskaRegulacijaAVPR1a
             this.DoubleBuffered = true;
             LoadComponents();
             FillTexts();
+            LoadTranscriptionFactors();
 
-            this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true,
-                new Point(496, 64),
+            this.rnaPolymerase = new RNAPolymerase("РНК полимераза", "Објаснување за полимеразата", true, 120,
+                new Point(586, 64),
                 new Point(this.lblTSSMark.Location.X - 30, this.lblTSSMark.Location.Y - 10),
                 new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
 
-            this.timePolymerase.Interval = (int)this.rnaPolymerase.Speed;
+            this.timeMoleculeBinding.Interval = this.timeRNATranscription.Interval = (int)this.rnaPolymerase.Speed;
         }
 
         public void LoadComponents()
@@ -39,10 +41,14 @@ namespace GenskaRegulacijaAVPR1a
             this.btnStart.FlatAppearance.BorderSize = this.btnStop.FlatAppearance.BorderSize = 2;
             this.btnStart.ForeColor = this.btnStop.ForeColor = Color.White;
 
+
             // Necessary for proper and consistent change during mouse over
             this.lblTATA.FontSize = this.lblTSS.FontSize = this.lbl3UTR.FontSize = this.lbl5UTR.FontSize = 11;
             this.lblGeneName.FontSize = 18;
             this.lblRNAPolymerase.FontSize = this.lblTF.FontSize = this.lblSmallMolecules.FontSize = 14;
+            this.lblRP58.FontSize = this.lblXBP1.FontSize = this.lblE2F1.FontSize = this.lblCLOCK.FontSize = this.lblTRIM28.FontSize = 11;
+            this.lblDiclofenamide.FontSize = this.lblLincomycin.FontSize = this.lblProcaine.FontSize = this.lblTroglitazone.FontSize = 11;
+
 
             // Setting a tooltip message that labels contain more details on click
             toolTip1.SetToolTip(this.lblTATA, tooltipMessage);
@@ -53,6 +59,17 @@ namespace GenskaRegulacijaAVPR1a
             toolTip1.SetToolTip(this.lblRNAPolymerase, tooltipMessage);
             toolTip1.SetToolTip(this.lblTF, tooltipMessage);
             toolTip1.SetToolTip(this.lblSmallMolecules, tooltipMessage);
+
+            toolTip1.SetToolTip(this.lblRP58, tooltipMessage);
+            toolTip1.SetToolTip(this.lblXBP1, tooltipMessage);
+            toolTip1.SetToolTip(this.lblE2F1, tooltipMessage);
+            toolTip1.SetToolTip(this.lblCLOCK, tooltipMessage);
+            toolTip1.SetToolTip(this.lblTRIM28, tooltipMessage);
+
+            toolTip1.SetToolTip(this.lblDiclofenamide, tooltipMessage);
+            toolTip1.SetToolTip(this.lblLincomycin, tooltipMessage);
+            toolTip1.SetToolTip(this.lblProcaine, tooltipMessage);
+            toolTip1.SetToolTip(this.lblTroglitazone, tooltipMessage);
         }
 
         private void FillTexts()
@@ -65,34 +82,25 @@ namespace GenskaRegulacijaAVPR1a
             this.lblRNAPolymerase.ExplanationText = "Детали за полимеразата";
             this.lblTF.ExplanationText = "Детали за транскрипциските фактори";
             this.lblSmallMolecules.ExplanationText = "Детали за малите молекули";
+
+            this.lblRP58.ExplanationText = "Репресор";
+            this.lblXBP1.ExplanationText = "Активатор";
+            this.lblE2F1.ExplanationText = "Активатор";
+            this.lblCLOCK.ExplanationText = "Активатор";
+            this.lblTRIM28.ExplanationText = "Репресор";
         }
 
-        private void ClickableLabel_Click(object sender, EventArgs e)
+        public void LoadTranscriptionFactors()
         {
-            ClickableLabel customLabel = sender as ClickableLabel;
-            customLabel.showExplanation();
-        }
+            float bindingSpeed = 120;
+            this.TFs = new Dictionary<string, TransciptionFactor>();
 
-        private void ClickableLabel_MouseEnter(object sender, EventArgs e)
-        {
-            ClickableLabel customLabel = sender as ClickableLabel;
-            customLabel.ForeColor = ClickableLabel.FocusTextColour;
-            customLabel.Font = new Font("Calibri", customLabel.FontSize, FontStyle.Bold);
-            this.Cursor = Cursors.Hand;
-        }
-
-        private void ClickableLabel_MouseLeave(object sender, EventArgs e)
-        {
-            ClickableLabel customLabel = sender as ClickableLabel;
-            customLabel.ForeColor = ClickableLabel.NormalTextColour;
-            customLabel.Font = new Font("Calibri", customLabel.FontSize, FontStyle.Regular);
-            this.Cursor = Cursors.Default;
-        }
-
-        private void timePolymerase_Tick(object sender, EventArgs e)
-        {
-            this.rnaPolymerase.move();
-            Invalidate(true);
+            this.TFs.Add(this.cbRP58.Name, new TransciptionFactor("RP58", "", cbRP58.Checked, bindingSpeed, new Point(50, 320), -1, new Point(125, 507), Color.PaleVioletRed, 19));
+            this.TFs.Add(this.cbXBP1.Name, new TransciptionFactor("XBP-1", "", cbXBP1.Checked, bindingSpeed, new Point(105, 320), 1, new Point(138, 502), Color.LemonChiffon, 22));
+            this.TFs.Add(this.cbE2F1.Name, new TransciptionFactor("E2F-1", "", cbE2F1.Checked, bindingSpeed, new Point(160, 320), 1, new Point(166, 512), Color.LightBlue, 19));
+            this.TFs.Add(this.cbCLOCK.Name, new TransciptionFactor("CLOCK", "", cbCLOCK.Checked, bindingSpeed, new Point(210, 320), 1, new Point(183, 517), Color.Lavender, 21));
+            this.TFs.Add(this.cbTRIM28.Name, new TransciptionFactor("TRIM28", "", cbTRIM28.Checked, bindingSpeed, new Point(270, 320), -1, new Point(208, 509), Color.Khaki, 25));
+        
         }
 
         /**
@@ -175,6 +183,93 @@ namespace GenskaRegulacijaAVPR1a
         
         }
 
+        /**
+         * Returns true if the transcription of the gene can begin,
+         * false otherwise
+         */
+        private bool checkInfluence()
+        {
+            List<TransciptionFactor> tmp = new List<TransciptionFactor>(this.TFs.Values.Where<TransciptionFactor>(x => x.Visibility && x.IsAttached));
+            if (tmp.Count == 0)
+            {
+                MessageBox.Show("Транскрипцијата не може да започне бидејќи нема транскрипциски фактори поврзани за промоторот");
+                return false;
+            }
+
+            int influence = 0;
+            foreach (var item in tmp)
+            {
+                influence += item.Influence;
+            }
+
+            if (influence == 0)
+            {
+                MessageBox.Show("Транскрипцијата не може да започне бидејќи нема доволно активатори кои придонесуваат со своето позитивно влијание");
+                return false;
+            }
+            else if (influence < 0)
+            {
+                MessageBox.Show("Транскрипцијата не може да започне бидејќи има повеќе репресори отколку активатори на промотор секвенцата. Овие репресори ја спречуваат експресијата на генот.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ClickableLabel_Click(object sender, EventArgs e)
+        {
+            ClickableLabel customLabel = sender as ClickableLabel;
+            customLabel.showExplanation();
+        }
+
+        private void ClickableLabel_MouseEnter(object sender, EventArgs e)
+        {
+            ClickableLabel customLabel = sender as ClickableLabel;
+            customLabel.ForeColor = ClickableLabel.FocusTextColour;
+            customLabel.Font = new Font("Calibri", customLabel.FontSize, FontStyle.Bold);
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void ClickableLabel_MouseLeave(object sender, EventArgs e)
+        {
+            ClickableLabel customLabel = sender as ClickableLabel;
+            customLabel.ForeColor = ClickableLabel.NormalTextColour;
+            customLabel.Font = new Font("Calibri", customLabel.FontSize, FontStyle.Regular);
+            this.Cursor = Cursors.Default;
+        }
+
+        private void timeMoleculeBinding_Tick(object sender, EventArgs e)
+        {
+            this.rnaPolymerase.move();
+            if (this.rnaPolymerase.IsAttached)
+            {
+                this.btnStart.Text = "Започни транскрипција";
+                this.btnStart.Enabled = true;
+                this.rnaPolymerase.IsMoving = false;
+                this.timeMoleculeBinding.Stop();
+            }
+
+            foreach (var item in this.TFs.Values)
+            {
+                item.move();
+            }
+            Invalidate();
+        }
+
+        private void timeRNATranscription_Tick(object sender, EventArgs e)
+        {
+            this.rnaPolymerase.move();
+            if (this.rnaPolymerase.CurrentPosition == this.rnaPolymerase.InitialPosition)
+            {
+                this.btnStart.Text = "Поврзување";
+                this.btnStart.Enabled = true;
+                this.timeRNATranscription.Stop();
+            }
+            Invalidate();
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -182,6 +277,10 @@ namespace GenskaRegulacijaAVPR1a
             this.drawDNARegions(e.Graphics);
 
             this.rnaPolymerase.Draw(e.Graphics);
+            foreach (var item in this.TFs.Values)
+            {
+                item.Draw(e.Graphics);
+            }
         }
 
         private void NucleusForm_Paint(object sender, PaintEventArgs e)
@@ -191,14 +290,51 @@ namespace GenskaRegulacijaAVPR1a
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            this.timePolymerase.Start();
-            this.rnaPolymerase.IsMoving = true;
+            Button btn = sender as Button;
+            if (btn.Text == "Поврзување")
+            {
+                this.timeMoleculeBinding.Start();
+                btn.Enabled = false;
+                this.rnaPolymerase.IsMoving = true;
+                foreach (var item in this.TFs.Values)
+                {
+                    item.IsMoving = true;
+                }
+            }
+            else if (btn.Text == "Започни транскрипција")
+            {
+                bool canTranscribe = this.checkInfluence();
+                if (canTranscribe)
+                {
+                    btn.Enabled = false;
+                    this.rnaPolymerase.IsMoving = true;
+                    this.timeRNATranscription.Start();
+                }
+            }
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            this.timePolymerase.Stop();
+            this.timeMoleculeBinding.Stop();
+            this.timeRNATranscription.Stop();
             this.rnaPolymerase.IsMoving = false;
+            this.btnStart.Enabled = true;
+            foreach (var item in this.TFs.Values)
+            {
+                item.IsMoving = false;
+            }
+        }
+
+        private void cbTF_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            TransciptionFactor tf;
+            if (this.TFs.ContainsKey(cb.Name))
+            {
+                tf = this.TFs[cb.Name];
+                tf.Visibility = cb.Checked;
+            }
+            Invalidate();
         }
     }
 }

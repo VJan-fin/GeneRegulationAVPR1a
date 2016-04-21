@@ -39,19 +39,25 @@ namespace GenskaRegulacijaAVPR1a
          * Indicates whether the molecule should be animated or not
          */
         public bool IsMoving { get; set; }
+        /**
+         * Indicates whether the molecule is attached to
+         * the corresponding binding site
+         */
+        public bool IsAttached { get; set; }
 
         public Molecule()
         {
         }
 
-        public Molecule(string name, string details, bool visibility, Point initialPosition)
+        public Molecule(string name, string details, bool visibility, float speed, Point initialPosition)
         {
             this.Name = name;
             this.Details = details;
             this.InitialPosition = this.CurrentPosition = initialPosition;
             this.Visibility = visibility;
             this.IsMoving = false;
-            this.Speed = 120;
+            this.IsAttached = false;
+            this.Speed = speed;
         }
 
         /**

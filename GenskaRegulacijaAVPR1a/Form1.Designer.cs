@@ -43,7 +43,25 @@
             this.pbRNAPolymerase = new System.Windows.Forms.PictureBox();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.timePolymerase = new System.Windows.Forms.Timer(this.components);
+            this.timeMoleculeBinding = new System.Windows.Forms.Timer(this.components);
+            this.cbRP58 = new System.Windows.Forms.CheckBox();
+            this.cbXBP1 = new System.Windows.Forms.CheckBox();
+            this.cbE2F1 = new System.Windows.Forms.CheckBox();
+            this.cbCLOCK = new System.Windows.Forms.CheckBox();
+            this.cbTRIM28 = new System.Windows.Forms.CheckBox();
+            this.numDiclofenamide = new System.Windows.Forms.NumericUpDown();
+            this.numLincomycin = new System.Windows.Forms.NumericUpDown();
+            this.numProcaine = new System.Windows.Forms.NumericUpDown();
+            this.numTroglitazone = new System.Windows.Forms.NumericUpDown();
+            this.lblTroglitazone = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblProcaine = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblLincomycin = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblDiclofenamide = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblTRIM28 = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblCLOCK = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblE2F1 = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblXBP1 = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.lblRP58 = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblSmallMolecules = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTF = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblRNAPolymerase = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -52,9 +70,14 @@
             this.lbl5UTR = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lbl3UTR = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTSS = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.timeRNATranscription = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiclofenamide)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLincomycin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numProcaine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTroglitazone)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTSSMark
@@ -181,7 +204,7 @@
             // 
             this.pbRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
             this.pbRNAPolymerase.Image = global::GenskaRegulacijaAVPR1a.Properties.Resources.RNA_pol_II;
-            this.pbRNAPolymerase.Location = new System.Drawing.Point(496, 64);
+            this.pbRNAPolymerase.Location = new System.Drawing.Point(586, 68);
             this.pbRNAPolymerase.Name = "pbRNAPolymerase";
             this.pbRNAPolymerase.Size = new System.Drawing.Size(70, 55);
             this.pbRNAPolymerase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -199,7 +222,7 @@
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(203, 49);
             this.btnStart.TabIndex = 17;
-            this.btnStart.Text = "Започни транскрипција";
+            this.btnStart.Text = "Поврзување";
             this.btnStart.UseVisualStyleBackColor = false;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
@@ -217,10 +240,288 @@
             this.btnStop.UseVisualStyleBackColor = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // timePolymerase
+            // timeMoleculeBinding
             // 
-            this.timePolymerase.Interval = 20;
-            this.timePolymerase.Tick += new System.EventHandler(this.timePolymerase_Tick);
+            this.timeMoleculeBinding.Tick += new System.EventHandler(this.timeMoleculeBinding_Tick);
+            // 
+            // cbRP58
+            // 
+            this.cbRP58.AutoSize = true;
+            this.cbRP58.BackColor = System.Drawing.Color.Transparent;
+            this.cbRP58.Checked = true;
+            this.cbRP58.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbRP58.Location = new System.Drawing.Point(120, 146);
+            this.cbRP58.Name = "cbRP58";
+            this.cbRP58.Size = new System.Drawing.Size(15, 14);
+            this.cbRP58.TabIndex = 22;
+            this.cbRP58.UseVisualStyleBackColor = false;
+            this.cbRP58.CheckedChanged += new System.EventHandler(this.cbTF_CheckedChanged);
+            // 
+            // cbXBP1
+            // 
+            this.cbXBP1.AutoSize = true;
+            this.cbXBP1.BackColor = System.Drawing.Color.Transparent;
+            this.cbXBP1.Checked = true;
+            this.cbXBP1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbXBP1.Location = new System.Drawing.Point(120, 174);
+            this.cbXBP1.Name = "cbXBP1";
+            this.cbXBP1.Size = new System.Drawing.Size(15, 14);
+            this.cbXBP1.TabIndex = 24;
+            this.cbXBP1.UseVisualStyleBackColor = false;
+            this.cbXBP1.CheckedChanged += new System.EventHandler(this.cbTF_CheckedChanged);
+            // 
+            // cbE2F1
+            // 
+            this.cbE2F1.AutoSize = true;
+            this.cbE2F1.BackColor = System.Drawing.Color.Transparent;
+            this.cbE2F1.Checked = true;
+            this.cbE2F1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbE2F1.Location = new System.Drawing.Point(120, 202);
+            this.cbE2F1.Name = "cbE2F1";
+            this.cbE2F1.Size = new System.Drawing.Size(15, 14);
+            this.cbE2F1.TabIndex = 26;
+            this.cbE2F1.UseVisualStyleBackColor = false;
+            this.cbE2F1.CheckedChanged += new System.EventHandler(this.cbTF_CheckedChanged);
+            // 
+            // cbCLOCK
+            // 
+            this.cbCLOCK.AutoSize = true;
+            this.cbCLOCK.BackColor = System.Drawing.Color.Transparent;
+            this.cbCLOCK.Checked = true;
+            this.cbCLOCK.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbCLOCK.Location = new System.Drawing.Point(120, 230);
+            this.cbCLOCK.Name = "cbCLOCK";
+            this.cbCLOCK.Size = new System.Drawing.Size(15, 14);
+            this.cbCLOCK.TabIndex = 28;
+            this.cbCLOCK.UseVisualStyleBackColor = false;
+            this.cbCLOCK.CheckedChanged += new System.EventHandler(this.cbTF_CheckedChanged);
+            // 
+            // cbTRIM28
+            // 
+            this.cbTRIM28.AutoSize = true;
+            this.cbTRIM28.BackColor = System.Drawing.Color.Transparent;
+            this.cbTRIM28.Checked = true;
+            this.cbTRIM28.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTRIM28.Location = new System.Drawing.Point(120, 260);
+            this.cbTRIM28.Name = "cbTRIM28";
+            this.cbTRIM28.Size = new System.Drawing.Size(15, 14);
+            this.cbTRIM28.TabIndex = 30;
+            this.cbTRIM28.UseVisualStyleBackColor = false;
+            this.cbTRIM28.CheckedChanged += new System.EventHandler(this.cbTF_CheckedChanged);
+            // 
+            // numDiclofenamide
+            // 
+            this.numDiclofenamide.Location = new System.Drawing.Point(388, 144);
+            this.numDiclofenamide.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numDiclofenamide.Name = "numDiclofenamide";
+            this.numDiclofenamide.Size = new System.Drawing.Size(45, 20);
+            this.numDiclofenamide.TabIndex = 32;
+            this.numDiclofenamide.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numLincomycin
+            // 
+            this.numLincomycin.Location = new System.Drawing.Point(388, 175);
+            this.numLincomycin.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numLincomycin.Name = "numLincomycin";
+            this.numLincomycin.Size = new System.Drawing.Size(45, 20);
+            this.numLincomycin.TabIndex = 34;
+            this.numLincomycin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numProcaine
+            // 
+            this.numProcaine.Location = new System.Drawing.Point(388, 203);
+            this.numProcaine.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numProcaine.Name = "numProcaine";
+            this.numProcaine.Size = new System.Drawing.Size(45, 20);
+            this.numProcaine.TabIndex = 36;
+            this.numProcaine.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // numTroglitazone
+            // 
+            this.numTroglitazone.Location = new System.Drawing.Point(388, 231);
+            this.numTroglitazone.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.numTroglitazone.Name = "numTroglitazone";
+            this.numTroglitazone.Size = new System.Drawing.Size(45, 20);
+            this.numTroglitazone.TabIndex = 38;
+            this.numTroglitazone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblTroglitazone
+            // 
+            this.lblTroglitazone.AutoSize = true;
+            this.lblTroglitazone.BackColor = System.Drawing.Color.Transparent;
+            this.lblTroglitazone.ExplanationText = null;
+            this.lblTroglitazone.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblTroglitazone.FontSize = 0F;
+            this.lblTroglitazone.ForeColor = System.Drawing.Color.White;
+            this.lblTroglitazone.Location = new System.Drawing.Point(250, 230);
+            this.lblTroglitazone.Name = "lblTroglitazone";
+            this.lblTroglitazone.Size = new System.Drawing.Size(117, 18);
+            this.lblTroglitazone.TabIndex = 37;
+            this.lblTroglitazone.Text = "Troglitazone-6191";
+            this.lblTroglitazone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTroglitazone.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblTroglitazone.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblTroglitazone.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblProcaine
+            // 
+            this.lblProcaine.AutoSize = true;
+            this.lblProcaine.BackColor = System.Drawing.Color.Transparent;
+            this.lblProcaine.ExplanationText = null;
+            this.lblProcaine.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblProcaine.FontSize = 0F;
+            this.lblProcaine.ForeColor = System.Drawing.Color.White;
+            this.lblProcaine.Location = new System.Drawing.Point(250, 202);
+            this.lblProcaine.Name = "lblProcaine";
+            this.lblProcaine.Size = new System.Drawing.Size(95, 18);
+            this.lblProcaine.TabIndex = 35;
+            this.lblProcaine.Text = "Procaine-5430";
+            this.lblProcaine.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProcaine.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblProcaine.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblProcaine.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblLincomycin
+            // 
+            this.lblLincomycin.AutoSize = true;
+            this.lblLincomycin.BackColor = System.Drawing.Color.Transparent;
+            this.lblLincomycin.ExplanationText = null;
+            this.lblLincomycin.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblLincomycin.FontSize = 0F;
+            this.lblLincomycin.ForeColor = System.Drawing.Color.White;
+            this.lblLincomycin.Location = new System.Drawing.Point(250, 174);
+            this.lblLincomycin.Name = "lblLincomycin";
+            this.lblLincomycin.Size = new System.Drawing.Size(110, 18);
+            this.lblLincomycin.TabIndex = 33;
+            this.lblLincomycin.Text = "Lincomycin-7411";
+            this.lblLincomycin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblLincomycin.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblLincomycin.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblLincomycin.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblDiclofenamide
+            // 
+            this.lblDiclofenamide.AutoSize = true;
+            this.lblDiclofenamide.BackColor = System.Drawing.Color.Transparent;
+            this.lblDiclofenamide.ExplanationText = null;
+            this.lblDiclofenamide.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblDiclofenamide.FontSize = 0F;
+            this.lblDiclofenamide.ForeColor = System.Drawing.Color.White;
+            this.lblDiclofenamide.Location = new System.Drawing.Point(250, 143);
+            this.lblDiclofenamide.Name = "lblDiclofenamide";
+            this.lblDiclofenamide.Size = new System.Drawing.Size(132, 18);
+            this.lblDiclofenamide.TabIndex = 31;
+            this.lblDiclofenamide.Text = "Diclofenamide-3366";
+            this.lblDiclofenamide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDiclofenamide.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblDiclofenamide.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblDiclofenamide.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblTRIM28
+            // 
+            this.lblTRIM28.AutoSize = true;
+            this.lblTRIM28.BackColor = System.Drawing.Color.Transparent;
+            this.lblTRIM28.ExplanationText = null;
+            this.lblTRIM28.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblTRIM28.FontSize = 0F;
+            this.lblTRIM28.ForeColor = System.Drawing.Color.White;
+            this.lblTRIM28.Location = new System.Drawing.Point(32, 257);
+            this.lblTRIM28.Name = "lblTRIM28";
+            this.lblTRIM28.Size = new System.Drawing.Size(53, 18);
+            this.lblTRIM28.TabIndex = 29;
+            this.lblTRIM28.Text = "TRIM28";
+            this.lblTRIM28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTRIM28.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblTRIM28.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblTRIM28.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblCLOCK
+            // 
+            this.lblCLOCK.AutoSize = true;
+            this.lblCLOCK.BackColor = System.Drawing.Color.Transparent;
+            this.lblCLOCK.ExplanationText = null;
+            this.lblCLOCK.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblCLOCK.FontSize = 0F;
+            this.lblCLOCK.ForeColor = System.Drawing.Color.White;
+            this.lblCLOCK.Location = new System.Drawing.Point(32, 227);
+            this.lblCLOCK.Name = "lblCLOCK";
+            this.lblCLOCK.Size = new System.Drawing.Size(48, 18);
+            this.lblCLOCK.TabIndex = 27;
+            this.lblCLOCK.Text = "CLOCK";
+            this.lblCLOCK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCLOCK.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblCLOCK.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblCLOCK.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblE2F1
+            // 
+            this.lblE2F1.AutoSize = true;
+            this.lblE2F1.BackColor = System.Drawing.Color.Transparent;
+            this.lblE2F1.ExplanationText = null;
+            this.lblE2F1.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblE2F1.FontSize = 0F;
+            this.lblE2F1.ForeColor = System.Drawing.Color.White;
+            this.lblE2F1.Location = new System.Drawing.Point(32, 199);
+            this.lblE2F1.Name = "lblE2F1";
+            this.lblE2F1.Size = new System.Drawing.Size(41, 18);
+            this.lblE2F1.TabIndex = 25;
+            this.lblE2F1.Text = "E2F-1";
+            this.lblE2F1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblE2F1.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblE2F1.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblE2F1.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblXBP1
+            // 
+            this.lblXBP1.AutoSize = true;
+            this.lblXBP1.BackColor = System.Drawing.Color.Transparent;
+            this.lblXBP1.ExplanationText = null;
+            this.lblXBP1.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblXBP1.FontSize = 0F;
+            this.lblXBP1.ForeColor = System.Drawing.Color.White;
+            this.lblXBP1.Location = new System.Drawing.Point(32, 171);
+            this.lblXBP1.Name = "lblXBP1";
+            this.lblXBP1.Size = new System.Drawing.Size(44, 18);
+            this.lblXBP1.TabIndex = 23;
+            this.lblXBP1.Text = "XBP-1";
+            this.lblXBP1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblXBP1.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblXBP1.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblXBP1.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
+            // 
+            // lblRP58
+            // 
+            this.lblRP58.AutoSize = true;
+            this.lblRP58.BackColor = System.Drawing.Color.Transparent;
+            this.lblRP58.ExplanationText = null;
+            this.lblRP58.Font = new System.Drawing.Font("Calibri", 11F);
+            this.lblRP58.FontSize = 0F;
+            this.lblRP58.ForeColor = System.Drawing.Color.White;
+            this.lblRP58.Location = new System.Drawing.Point(32, 143);
+            this.lblRP58.Name = "lblRP58";
+            this.lblRP58.Size = new System.Drawing.Size(38, 18);
+            this.lblRP58.TabIndex = 21;
+            this.lblRP58.Text = "RP58";
+            this.lblRP58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblRP58.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblRP58.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblRP58.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
             // 
             // lblSmallMolecules
             // 
@@ -265,7 +566,7 @@
             this.lblRNAPolymerase.Font = new System.Drawing.Font("Calibri", 14F);
             this.lblRNAPolymerase.FontSize = 0F;
             this.lblRNAPolymerase.ForeColor = System.Drawing.Color.White;
-            this.lblRNAPolymerase.Location = new System.Drawing.Point(463, 24);
+            this.lblRNAPolymerase.Location = new System.Drawing.Point(553, 28);
             this.lblRNAPolymerase.Name = "lblRNAPolymerase";
             this.lblRNAPolymerase.Size = new System.Drawing.Size(153, 37);
             this.lblRNAPolymerase.TabIndex = 16;
@@ -360,6 +661,10 @@
             this.lblTSS.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
             this.lblTSS.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
             // 
+            // timeRNATranscription
+            // 
+            this.timeRNATranscription.Tick += new System.EventHandler(this.timeRNATranscription_Tick);
+            // 
             // NucleusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,6 +672,24 @@
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 612);
+            this.Controls.Add(this.numTroglitazone);
+            this.Controls.Add(this.lblTroglitazone);
+            this.Controls.Add(this.numProcaine);
+            this.Controls.Add(this.lblProcaine);
+            this.Controls.Add(this.numLincomycin);
+            this.Controls.Add(this.lblLincomycin);
+            this.Controls.Add(this.numDiclofenamide);
+            this.Controls.Add(this.lblDiclofenamide);
+            this.Controls.Add(this.cbTRIM28);
+            this.Controls.Add(this.lblTRIM28);
+            this.Controls.Add(this.cbCLOCK);
+            this.Controls.Add(this.lblCLOCK);
+            this.Controls.Add(this.cbE2F1);
+            this.Controls.Add(this.lblE2F1);
+            this.Controls.Add(this.cbXBP1);
+            this.Controls.Add(this.lblXBP1);
+            this.Controls.Add(this.cbRP58);
+            this.Controls.Add(this.lblRP58);
             this.Controls.Add(this.lblSmallMolecules);
             this.Controls.Add(this.lblTF);
             this.Controls.Add(this.btnStop);
@@ -394,6 +717,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbRNAPolymerase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDiclofenamide)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numLincomycin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numProcaine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numTroglitazone)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -421,9 +748,28 @@
         private ClickableLabel lblRNAPolymerase;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
-        private System.Windows.Forms.Timer timePolymerase;
+        private System.Windows.Forms.Timer timeMoleculeBinding;
         private ClickableLabel lblTF;
         private ClickableLabel lblSmallMolecules;
+        private ClickableLabel lblRP58;
+        private System.Windows.Forms.CheckBox cbRP58;
+        private System.Windows.Forms.CheckBox cbXBP1;
+        private ClickableLabel lblXBP1;
+        private System.Windows.Forms.CheckBox cbE2F1;
+        private ClickableLabel lblE2F1;
+        private System.Windows.Forms.CheckBox cbCLOCK;
+        private ClickableLabel lblCLOCK;
+        private System.Windows.Forms.CheckBox cbTRIM28;
+        private ClickableLabel lblTRIM28;
+        private ClickableLabel lblDiclofenamide;
+        private System.Windows.Forms.NumericUpDown numDiclofenamide;
+        private System.Windows.Forms.NumericUpDown numLincomycin;
+        private ClickableLabel lblLincomycin;
+        private System.Windows.Forms.NumericUpDown numProcaine;
+        private ClickableLabel lblProcaine;
+        private System.Windows.Forms.NumericUpDown numTroglitazone;
+        private ClickableLabel lblTroglitazone;
+        private System.Windows.Forms.Timer timeRNATranscription;
     }
 }
 

@@ -11,12 +11,6 @@ namespace GenskaRegulacijaAVPR1a
     public class RNAPolymerase : Molecule
     {
         /**
-         * Indicates whether the polymerase is attached to
-         * the DNA strand or not
-         * (shows the direction of movement)
-         */
-        public bool IsAttached { get; set; }
-        /**
          * The location of the DNA binding site for the polymerase
          * (location of TSS)
          */
@@ -27,9 +21,8 @@ namespace GenskaRegulacijaAVPR1a
          */
         public Point TranscriptionEndSite { get; private set; }
 
-        public RNAPolymerase(string name, string details, bool visibility, Point initialPosition, Point polymeraseBindingSite, Point transcriptionEndSite) : base(name, details, visibility, initialPosition)
+        public RNAPolymerase(string name, string details, bool visibility, float speed, Point initialPosition, Point polymeraseBindingSite, Point transcriptionEndSite) : base(name, details, visibility, speed, initialPosition)
         {
-            this.IsAttached = false;
             this.PolymeraseBindingSite = polymeraseBindingSite;
             this.TranscriptionEndSite = transcriptionEndSite;
         }
@@ -67,6 +60,7 @@ namespace GenskaRegulacijaAVPR1a
                 {
                     this.IsAttached = true;
                     this.CurrentPosition = this.PolymeraseBindingSite;
+                    //this.IsMoving = false;
                     return;
                 }
             }

@@ -24,7 +24,8 @@ namespace GenskaRegulacijaAVPR1a
             this.BackColor = Color.Transparent;
             this.ForeColor = ClickableLabel.NormalTextColour;
             this.TextAlign = ContentAlignment.MiddleCenter;
-            this.Font = new Font("Calibri", 11, FontStyle.Regular);
+            this.FontSize = 11;
+            this.Font = new Font("Calibri", this.FontSize, FontStyle.Regular);
         }
 
         public void showExplanation()
