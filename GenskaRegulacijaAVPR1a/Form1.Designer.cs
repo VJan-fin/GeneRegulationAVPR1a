@@ -55,6 +55,11 @@
             this.numTroglitazone = new System.Windows.Forms.NumericUpDown();
             this.timeRNATranscription = new System.Windows.Forms.Timer(this.components);
             this.btnReset = new System.Windows.Forms.Button();
+            this.lblBasicExplanation = new System.Windows.Forms.Label();
+            this.lblProcessExplanation = new System.Windows.Forms.Label();
+            this.lblRNAQuantity = new System.Windows.Forms.Label();
+            this.timeRNAFadeOut = new System.Windows.Forms.Timer(this.components);
+            this.lblUpstreamPromoter = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTroglitazone = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblProcaine = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblLincomycin = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -205,7 +210,7 @@
             // 
             this.pbRNAPolymerase.BackColor = System.Drawing.Color.Transparent;
             this.pbRNAPolymerase.Image = global::GenskaRegulacijaAVPR1a.Properties.Resources.RNA_pol_II;
-            this.pbRNAPolymerase.Location = new System.Drawing.Point(586, 68);
+            this.pbRNAPolymerase.Location = new System.Drawing.Point(517, 250);
             this.pbRNAPolymerase.Name = "pbRNAPolymerase";
             this.pbRNAPolymerase.Size = new System.Drawing.Size(70, 55);
             this.pbRNAPolymerase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -219,7 +224,7 @@
             this.btnStart.FlatAppearance.BorderSize = 2;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStart.Location = new System.Drawing.Point(759, 208);
+            this.btnStart.Location = new System.Drawing.Point(759, 232);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(198, 33);
             this.btnStart.TabIndex = 17;
@@ -233,7 +238,7 @@
             this.btnStop.FlatAppearance.BorderSize = 2;
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnStop.Location = new System.Drawing.Point(759, 258);
+            this.btnStop.Location = new System.Drawing.Point(759, 282);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(198, 33);
             this.btnStop.TabIndex = 18;
@@ -243,6 +248,7 @@
             // 
             // timeMoleculeBinding
             // 
+            this.timeMoleculeBinding.Interval = 50;
             this.timeMoleculeBinding.Tick += new System.EventHandler(this.timeMoleculeBinding_Tick);
             // 
             // cbRP58
@@ -376,13 +382,71 @@
             this.btnReset.FlatAppearance.BorderSize = 2;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnReset.Location = new System.Drawing.Point(759, 307);
+            this.btnReset.Location = new System.Drawing.Point(759, 331);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(198, 33);
             this.btnReset.TabIndex = 39;
             this.btnReset.Text = "Ресетирај";
             this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // lblBasicExplanation
+            // 
+            this.lblBasicExplanation.BackColor = System.Drawing.Color.Transparent;
+            this.lblBasicExplanation.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblBasicExplanation.ForeColor = System.Drawing.Color.White;
+            this.lblBasicExplanation.Location = new System.Drawing.Point(196, 26);
+            this.lblBasicExplanation.Name = "lblBasicExplanation";
+            this.lblBasicExplanation.Size = new System.Drawing.Size(256, 66);
+            this.lblBasicExplanation.TabIndex = 41;
+            this.lblBasicExplanation.Text = "За повеќе детали во врска со секој од елементите во процесот, кликнете на нивното" +
+    " име.";
+            // 
+            // lblProcessExplanation
+            // 
+            this.lblProcessExplanation.BackColor = System.Drawing.Color.Transparent;
+            this.lblProcessExplanation.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblProcessExplanation.ForeColor = System.Drawing.Color.White;
+            this.lblProcessExplanation.Location = new System.Drawing.Point(458, 26);
+            this.lblProcessExplanation.Name = "lblProcessExplanation";
+            this.lblProcessExplanation.Size = new System.Drawing.Size(499, 190);
+            this.lblProcessExplanation.TabIndex = 42;
+            this.lblProcessExplanation.Text = "Објаснување на чекорите";
+            // 
+            // lblRNAQuantity
+            // 
+            this.lblRNAQuantity.AutoSize = true;
+            this.lblRNAQuantity.BackColor = System.Drawing.Color.Transparent;
+            this.lblRNAQuantity.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblRNAQuantity.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblRNAQuantity.Location = new System.Drawing.Point(626, 552);
+            this.lblRNAQuantity.Name = "lblRNAQuantity";
+            this.lblRNAQuantity.Size = new System.Drawing.Size(112, 29);
+            this.lblRNAQuantity.TabIndex = 43;
+            this.lblRNAQuantity.Text = "+ 1 mRNA";
+            this.lblRNAQuantity.Visible = false;
+            // 
+            // timeRNAFadeOut
+            // 
+            this.timeRNAFadeOut.Interval = 2500;
+            this.timeRNAFadeOut.Tick += new System.EventHandler(this.timeRNAFadeOut_Tick);
+            // 
+            // lblUpstreamPromoter
+            // 
+            this.lblUpstreamPromoter.BackColor = System.Drawing.Color.Transparent;
+            this.lblUpstreamPromoter.ExplanationText = null;
+            this.lblUpstreamPromoter.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblUpstreamPromoter.FontSize = 0F;
+            this.lblUpstreamPromoter.ForeColor = System.Drawing.Color.White;
+            this.lblUpstreamPromoter.Location = new System.Drawing.Point(106, 541);
+            this.lblUpstreamPromoter.Name = "lblUpstreamPromoter";
+            this.lblUpstreamPromoter.Size = new System.Drawing.Size(138, 23);
+            this.lblUpstreamPromoter.TabIndex = 40;
+            this.lblUpstreamPromoter.Text = "Близок промотор";
+            this.lblUpstreamPromoter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUpstreamPromoter.Click += new System.EventHandler(this.ClickableLabel_Click);
+            this.lblUpstreamPromoter.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
+            this.lblUpstreamPromoter.MouseLeave += new System.EventHandler(this.ClickableLabel_MouseLeave);
             // 
             // lblTroglitazone
             // 
@@ -589,11 +653,11 @@
             this.lblRNAPolymerase.Font = new System.Drawing.Font("Calibri", 14F);
             this.lblRNAPolymerase.FontSize = 0F;
             this.lblRNAPolymerase.ForeColor = System.Drawing.Color.White;
-            this.lblRNAPolymerase.Location = new System.Drawing.Point(553, 28);
+            this.lblRNAPolymerase.Location = new System.Drawing.Point(467, 220);
             this.lblRNAPolymerase.Name = "lblRNAPolymerase";
-            this.lblRNAPolymerase.Size = new System.Drawing.Size(153, 37);
+            this.lblRNAPolymerase.Size = new System.Drawing.Size(180, 27);
             this.lblRNAPolymerase.TabIndex = 16;
-            this.lblRNAPolymerase.Text = "RNA полимераза";
+            this.lblRNAPolymerase.Text = "RNA полимераза II";
             this.lblRNAPolymerase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblRNAPolymerase.Click += new System.EventHandler(this.ClickableLabel_Click);
             this.lblRNAPolymerase.MouseEnter += new System.EventHandler(this.ClickableLabel_MouseEnter);
@@ -691,6 +755,10 @@
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 612);
+            this.Controls.Add(this.lblRNAQuantity);
+            this.Controls.Add(this.lblProcessExplanation);
+            this.Controls.Add(this.lblBasicExplanation);
+            this.Controls.Add(this.lblUpstreamPromoter);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.numTroglitazone);
             this.Controls.Add(this.lblTroglitazone);
@@ -732,6 +800,7 @@
             this.Controls.Add(this.pbDNA1);
             this.Controls.Add(this.pbDNA2);
             this.Name = "NucleusForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Генска регулација на AVPR1a";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.NucleusForm_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pbDNA1)).EndInit();
@@ -791,6 +860,11 @@
         private ClickableLabel lblTroglitazone;
         private System.Windows.Forms.Timer timeRNATranscription;
         private System.Windows.Forms.Button btnReset;
+        private ClickableLabel lblUpstreamPromoter;
+        private System.Windows.Forms.Label lblBasicExplanation;
+        private System.Windows.Forms.Label lblProcessExplanation;
+        private System.Windows.Forms.Label lblRNAQuantity;
+        private System.Windows.Forms.Timer timeRNAFadeOut;
     }
 }
 

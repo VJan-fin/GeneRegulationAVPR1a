@@ -30,7 +30,9 @@ namespace GenskaRegulacijaAVPR1a
 
         public void showExplanation()
         {
-            MessageBox.Show(this.ExplanationText);
+            //MessageBox.Show(this.ExplanationText);
+            LabelDetails detailsForm = new LabelDetails("Детали за " + this.Text, this.ExplanationText);
+            detailsForm.Show();
         }
     }
 }
