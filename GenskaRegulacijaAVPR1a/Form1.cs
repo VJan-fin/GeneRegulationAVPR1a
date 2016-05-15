@@ -312,7 +312,7 @@ namespace GenskaRegulacijaAVPR1a
                 //mRNA synthesis text
                 this.lblRNAQuantity.Text = "+ " + (1 + (int)(this.mRNAQuantity / 3)).ToString() + " mRNA";
                 this.lblRNAQuantity.Visible = true;
-                this.timeRNAFadeOut.Start();
+                this.lblNextPhase.Visible = true;
             }
             Invalidate();
         }
@@ -434,10 +434,20 @@ namespace GenskaRegulacijaAVPR1a
             Invalidate();
         }
 
-        private void timeRNAFadeOut_Tick(object sender, EventArgs e)
+        private void lblRNAQuantity_Click(object sender, EventArgs e)
         {
-            this.lblRNAQuantity.Visible = false;
-            this.timeRNAFadeOut.Stop();
+            mRNAForm next = new mRNAForm();
+            next.Show();
+        }
+
+        private void lblRNAQuantity_MouseEnter(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+        }
+
+        private void lblRNAQuantity_MouseLeave(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.Default;
         }
     }
 }

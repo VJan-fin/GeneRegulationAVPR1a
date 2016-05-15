@@ -58,7 +58,7 @@
             this.lblBasicExplanation = new System.Windows.Forms.Label();
             this.lblProcessExplanation = new System.Windows.Forms.Label();
             this.lblRNAQuantity = new System.Windows.Forms.Label();
-            this.timeRNAFadeOut = new System.Windows.Forms.Timer(this.components);
+            this.lblNextPhase = new System.Windows.Forms.Label();
             this.lblUpstreamPromoter = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblTroglitazone = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblProcaine = new GenskaRegulacijaAVPR1a.ClickableLabel();
@@ -419,17 +419,29 @@
             this.lblRNAQuantity.BackColor = System.Drawing.Color.Transparent;
             this.lblRNAQuantity.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblRNAQuantity.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lblRNAQuantity.Location = new System.Drawing.Point(626, 552);
+            this.lblRNAQuantity.Location = new System.Drawing.Point(626, 547);
             this.lblRNAQuantity.Name = "lblRNAQuantity";
             this.lblRNAQuantity.Size = new System.Drawing.Size(112, 29);
             this.lblRNAQuantity.TabIndex = 43;
             this.lblRNAQuantity.Text = "+ 1 mRNA";
             this.lblRNAQuantity.Visible = false;
+            this.lblRNAQuantity.Click += new System.EventHandler(this.lblRNAQuantity_Click);
+            this.lblRNAQuantity.MouseEnter += new System.EventHandler(this.lblRNAQuantity_MouseEnter);
+            this.lblRNAQuantity.MouseLeave += new System.EventHandler(this.lblRNAQuantity_MouseLeave);
             // 
-            // timeRNAFadeOut
+            // lblNextPhase
             // 
-            this.timeRNAFadeOut.Interval = 2500;
-            this.timeRNAFadeOut.Tick += new System.EventHandler(this.timeRNAFadeOut_Tick);
+            this.lblNextPhase.AutoSize = true;
+            this.lblNextPhase.BackColor = System.Drawing.Color.Transparent;
+            this.lblNextPhase.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblNextPhase.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblNextPhase.Location = new System.Drawing.Point(571, 584);
+            this.lblNextPhase.Name = "lblNextPhase";
+            this.lblNextPhase.Size = new System.Drawing.Size(249, 36);
+            this.lblNextPhase.TabIndex = 44;
+            this.lblNextPhase.Text = "Кликнете на mRNA за да продолжите \r\nво наредната фаза";
+            this.lblNextPhase.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNextPhase.Visible = false;
             // 
             // lblUpstreamPromoter
             // 
@@ -754,7 +766,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::GenskaRegulacijaAVPR1a.Properties.Resources.dna_background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(984, 612);
+            this.ClientSize = new System.Drawing.Size(984, 629);
+            this.Controls.Add(this.lblNextPhase);
             this.Controls.Add(this.lblRNAQuantity);
             this.Controls.Add(this.lblProcessExplanation);
             this.Controls.Add(this.lblBasicExplanation);
@@ -864,7 +877,7 @@
         private System.Windows.Forms.Label lblBasicExplanation;
         private System.Windows.Forms.Label lblProcessExplanation;
         private System.Windows.Forms.Label lblRNAQuantity;
-        private System.Windows.Forms.Timer timeRNAFadeOut;
+        private System.Windows.Forms.Label lblNextPhase;
     }
 }
 

@@ -39,7 +39,7 @@ namespace GenskaRegulacijaAVPR1a
 
             int dx = 0;
             int dy = 0;
-            int steps = 30;
+            int steps = 20;
             if (this.IsAttached)
             {
                 dx = (this.TranscriptionEndSite.X - this.PolymeraseBindingSite.X) / steps;
