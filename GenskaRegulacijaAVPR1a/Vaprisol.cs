@@ -18,7 +18,6 @@ namespace GenskaRegulacijaAVPR1a
         public override void Draw(Graphics g)
         {
             Bitmap bitmap = new Bitmap(Properties.Resources.res_vaprisol);
-            //Bitmap bitmap = new Bitmap(Properties.Resources.rna_polymerase);
             g.DrawImage(bitmap, this.CurrentPosition.X, this.CurrentPosition.Y, 84, 65);
         }
 
@@ -39,7 +38,6 @@ namespace GenskaRegulacijaAVPR1a
                 //this.IsMoving = false;
                 return;
             }
-
 
             this.CurrentPosition = new Point(this.CurrentPosition.X + dx, this.CurrentPosition.Y + dy);
         }

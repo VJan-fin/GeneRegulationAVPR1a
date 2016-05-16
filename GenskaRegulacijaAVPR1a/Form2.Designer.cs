@@ -375,7 +375,7 @@
             this.lblNextPhase.AutoSize = true;
             this.lblNextPhase.BackColor = System.Drawing.Color.Transparent;
             this.lblNextPhase.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblNextPhase.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblNextPhase.ForeColor = System.Drawing.Color.White;
             this.lblNextPhase.Location = new System.Drawing.Point(458, 568);
             this.lblNextPhase.Name = "lblNextPhase";
             this.lblNextPhase.Size = new System.Drawing.Size(278, 36);

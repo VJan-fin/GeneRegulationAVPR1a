@@ -11,14 +11,15 @@ namespace GenskaRegulacijaAVPR1a
     {
         public Point receptorEndSite { get; set; }
 
-        public Receptor(string name, string details, bool visibility, float speed, Point initialPosition, Point receptorEndSite) : base(name, details, visibility, speed, initialPosition)
+        public Receptor(string name, string details, bool visibility, float speed, Point initialPosition, Point receptorEndSite)
+            : base(name, details, visibility, speed, initialPosition)
         {
             this.receptorEndSite = receptorEndSite;
         }
+
         public override void Draw(Graphics g)
         {
             Bitmap bitmap = new Bitmap(Properties.Resources.res_avpr1a_receptor);
-            //Bitmap bitmap = new Bitmap(Properties.Resources.rna_polymerase);
             g.DrawImage(bitmap, this.CurrentPosition.X, this.CurrentPosition.Y, 159, 126);
         }
 
@@ -36,18 +37,17 @@ namespace GenskaRegulacijaAVPR1a
             int dx = 0;
             int dy = 0;
 
-            
-                int steps = 30;
-                dx = (this.receptorEndSite.X - this.InitialPosition.X) / steps;
-                dy = (this.receptorEndSite.Y - this.InitialPosition.Y) / steps;
-                if ((this.CurrentPosition.X + dx <= this.receptorEndSite.X))
-                {
-                    this.IsAttached = true;
-                    this.IsMoving = false;
-                    return;
-                }
-      
-            
+
+            int steps = 30;
+            dx = (this.receptorEndSite.X - this.InitialPosition.X) / steps;
+            dy = (this.receptorEndSite.Y - this.InitialPosition.Y) / steps;
+            if ((this.CurrentPosition.X + dx <= this.receptorEndSite.X))
+            {
+                this.IsAttached = true;
+                this.IsMoving = false;
+                return;
+            }
+
             this.CurrentPosition = new Point(this.CurrentPosition.X + dx, this.CurrentPosition.Y + dy);
         }
 

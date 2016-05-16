@@ -56,11 +56,10 @@ namespace GenskaRegulacijaAVPR1a
             {
                 dx = (this.PolymeraseBindingSite.X - this.InitialPosition.X) / steps;
                 dy = (this.PolymeraseBindingSite.Y - this.InitialPosition.Y) / steps;
-                if (/*(this.CurrentPosition.X + dx >= this.PolymeraseBindingSite.X) && */(this.CurrentPosition.Y + dy >= this.PolymeraseBindingSite.Y))
+                if (this.CurrentPosition.Y + dy >= this.PolymeraseBindingSite.Y)
                 {
                     this.IsAttached = true;
                     this.CurrentPosition = this.PolymeraseBindingSite;
-                    //this.IsMoving = false;
                     return;
                 }
             }
@@ -71,7 +70,6 @@ namespace GenskaRegulacijaAVPR1a
         public override void Draw(Graphics g)
         {
             Bitmap bitmap = new Bitmap(Properties.Resources.RNA_pol_II);
-            //Bitmap bitmap = new Bitmap(Properties.Resources.rna_polymerase);
             g.DrawImage(bitmap, this.CurrentPosition.X, this.CurrentPosition.Y, 80, 62);
         }
 

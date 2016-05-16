@@ -52,6 +52,7 @@
             this.lblArganineVasopressin = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblProtein = new GenskaRegulacijaAVPR1a.ClickableLabel();
             this.lblGeneNameProtein = new GenskaRegulacijaAVPR1a.ClickableLabel();
+            this.timerVasopresinToRec = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOPressure)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlasmaVolume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbGprotein)).BeginInit();
@@ -104,6 +105,7 @@
             this.pbArginineVasopressin.TabIndex = 19;
             this.pbArginineVasopressin.TabStop = false;
             this.pbArginineVasopressin.Visible = false;
+
             // 
             // lblBasicExplanation
             // 

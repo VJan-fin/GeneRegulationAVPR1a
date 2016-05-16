@@ -22,7 +22,6 @@ namespace GenskaRegulacijaAVPR1a
         public override void Draw(Graphics g)
         {
             Bitmap bitmap = new Bitmap(Properties.Resources.res_ribosome);
-            //Bitmap bitmap = new Bitmap(Properties.Resources.rna_polymerase);
             g.DrawImage(bitmap, this.CurrentPosition.X, this.CurrentPosition.Y, 70, 70);
         }
 
@@ -52,11 +51,10 @@ namespace GenskaRegulacijaAVPR1a
                 int steps = 30;
                 dx = (this.RibosomeBindingSite.X - this.InitialPosition.X) / steps;
                 dy = (this.RibosomeBindingSite.Y - this.InitialPosition.Y) / steps;
-                if (/*(this.CurrentPosition.X + dx >= this.RibosomeBindingSite.X) && */(this.CurrentPosition.Y + dy >= this.RibosomeBindingSite.Y))
+                if (this.CurrentPosition.Y + dy >= this.RibosomeBindingSite.Y)
                 {
                     this.IsAttached = true;
                     this.CurrentPosition = this.RibosomeBindingSite;
-                    //this.IsMoving = false;
                     return;
                 }
             }

@@ -47,13 +47,12 @@ namespace GenskaRegulacijaAVPR1a
             toolTipMsg.SetToolTip(this.lblDexamethasone, tooltipMessage);
             toolTipMsg.SetToolTip(this.lblCorticosterone, tooltipMessage);
             toolTipMsg.SetToolTip(this.lblAldosterone, tooltipMessage);
-
         }
+
         public void setScreenLayout()
         {
-
             this.ribosome = new Ribosome("Рибозом", "Објаснување за Рибозомот", true, 200,
-                new Point(this.pbRibosome.Location.X,this.pbRibosome.Location.Y),
+                new Point(this.pbRibosome.Location.X, this.pbRibosome.Location.Y),
                 new Point(this.lblRBSMark.Location.X - 30, this.lblRBSMark.Location.Y - 10),
                 new Point(this.lblUTR3Mark.Location.X + this.lblUTR3Mark.Width, this.lblUTR3Mark.Location.Y - 10));
 
@@ -125,8 +124,8 @@ namespace GenskaRegulacijaAVPR1a
         {
             this.ribosome.move();
             secondsTimer++;
-            lblTimer.Text = (100-secondsTimer).ToString();
-            if(secondsTimer==100)
+            lblTimer.Text = (100 - secondsTimer).ToString();
+            if (secondsTimer == 100)
             {
                 Reset();
                 MessageBox.Show("Транслацијата не може да заврши бидејќи mRNA молекулата е деградирана.");
@@ -182,7 +181,6 @@ namespace GenskaRegulacijaAVPR1a
             PointF textLocation;
             int alphaValue = 190;
 
-           
             // Ribosome Binding Site (RBS)
             brush = new SolidBrush(Color.FromArgb(alphaValue, 192, 255, 192));
             control = this.lblRBSMark;
@@ -190,7 +188,6 @@ namespace GenskaRegulacijaAVPR1a
             textLocation = new PointF(control.Location.X + control.Width / 10, control.Location.Y + control.Height / 3);
             g.DrawString("RBS", labels, textBrush, textLocation);
 
-          
             // Poly-A tail
             brush = new SolidBrush(Color.FromArgb(alphaValue, 255, 192, 128));
             control = this.lblUTR3Mark;
@@ -236,4 +233,4 @@ namespace GenskaRegulacijaAVPR1a
             this.Cursor = Cursors.Default;
         }
     }
-    }
+}

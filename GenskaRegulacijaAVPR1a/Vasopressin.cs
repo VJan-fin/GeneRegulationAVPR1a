@@ -20,7 +20,6 @@ namespace GenskaRegulacijaAVPR1a
         public override void Draw(Graphics g)
         {
             Bitmap bitmap = new Bitmap(Properties.Resources.res_arginine_vasopressin);
-            //Bitmap bitmap = new Bitmap(Properties.Resources.rna_polymerase);
             g.DrawImage(bitmap, this.CurrentPosition.X, this.CurrentPosition.Y, 64, 46);
         }
 
@@ -53,7 +52,6 @@ namespace GenskaRegulacijaAVPR1a
                 {
                     this.IsAttached = true;
                     this.CurrentPosition = this.vasopressinBindingSite;
-                    //this.IsMoving = false;
                     return;
                 }
             }
